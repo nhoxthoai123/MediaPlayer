@@ -1,0 +1,124 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MusicPlayer
+{
+    public partial class Form1 : Form
+    {
+        private List<string> musicFiles;
+        private string currentSong;
+        private bool isPaused;
+        private bool isChangingPosition;
+        public Form1()
+        {
+            InitializeComponent();
+            musicFiles = new List<string>();
+            isPaused = false;
+            isChangingPosition = false;
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "MP3 Files | *.mp3";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                foreach (string file in openFileDialog.FileNames)
+                {
+                    musicFiles.Add(file);
+                    listBox1.Items.Add(Path.GetFileName(file));
+                }
+
+                if (musicFiles.Count > 0)
+                {
+                    btnPlay.Enabled = true;
+                }
+            }
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                if (isPaused)
+                {
+                    musicPlayer.Ctlcontrols.play();
+                    isPaused = false;
+                }
+
+                else
+                {
+                    currentSong = musicFiles[listBox1.SelectedIndex];
+                    musicPlayer.URL = currentSong;
+                    musicPlayer.Ctlcontrols.play();
+                }
+
+                timerPlayback.Enabled = true;
+            }
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            if (isPaused == false)
+            {
+                musicPlayer.Ctlcontrols.pause();
+                isPaused = true;
+            }
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            musicPlayer.Ctlcontrols.stop();
+            isPaused = false;
+            timerPlayback.Enabled = false;
+        }
+
+        private void btnPre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerPlayback_Tick(object sender, EventArgs e)
+        {
+            if (!isPaused) 
+            {
+                label2.Text = "Lenght: " + FormatTime(musicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(musicPlayer.currentMedia.duration);
+            }
+        }
+
+        private string FormatTime(double seconds)
+        {
+            TimeSpan time = TimeSpan.FromSeconds(seconds);
+            return time.ToString(@"mm\:ss");
+        }
+
+        private void musicPlayer_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (e.newState == 8)
+            {
+                int nextIndex = listBox1.SelectedIndex += 1;
+
+            }
+        }
+    }
+}

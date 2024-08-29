@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.musicPlayer = new AxWMPLib.AxWindowsMediaPlayer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.siticoneTrackBar2 = new Siticone.Desktop.UI.WinForms.SiticoneTrackBar();
+            this.MusicBar = new Siticone.Desktop.UI.WinForms.SiticoneTrackBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.siticoneTrackBar1 = new Siticone.Desktop.UI.WinForms.SiticoneTrackBar();
+            this.VolumeBar = new Siticone.Desktop.UI.WinForms.SiticoneTrackBar();
             this.btnStop = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.btnPause = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             this.btnPlay = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
@@ -67,10 +67,10 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.siticoneTrackBar2);
+            this.panel1.Controls.Add(this.MusicBar);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.siticoneTrackBar1);
+            this.panel1.Controls.Add(this.VolumeBar);
             this.panel1.Controls.Add(this.btnStop);
             this.panel1.Controls.Add(this.btnPause);
             this.panel1.Controls.Add(this.btnPlay);
@@ -80,13 +80,13 @@
             this.panel1.Size = new System.Drawing.Size(862, 117);
             this.panel1.TabIndex = 1;
             // 
-            // siticoneTrackBar2
+            // MusicBar
             // 
-            this.siticoneTrackBar2.Location = new System.Drawing.Point(12, 11);
-            this.siticoneTrackBar2.Name = "siticoneTrackBar2";
-            this.siticoneTrackBar2.Size = new System.Drawing.Size(840, 23);
-            this.siticoneTrackBar2.TabIndex = 10;
-            this.siticoneTrackBar2.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
+            this.MusicBar.Location = new System.Drawing.Point(12, 11);
+            this.MusicBar.Name = "MusicBar";
+            this.MusicBar.Size = new System.Drawing.Size(840, 23);
+            this.MusicBar.TabIndex = 10;
+            this.MusicBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
             // 
             // label2
             // 
@@ -110,13 +110,14 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Volume";
             // 
-            // siticoneTrackBar1
+            // VolumeBar
             // 
-            this.siticoneTrackBar1.Location = new System.Drawing.Point(576, 72);
-            this.siticoneTrackBar1.Name = "siticoneTrackBar1";
-            this.siticoneTrackBar1.Size = new System.Drawing.Size(276, 23);
-            this.siticoneTrackBar1.TabIndex = 8;
-            this.siticoneTrackBar1.ThumbColor = System.Drawing.Color.Gray;
+            this.VolumeBar.Location = new System.Drawing.Point(576, 72);
+            this.VolumeBar.Name = "VolumeBar";
+            this.VolumeBar.Size = new System.Drawing.Size(276, 23);
+            this.VolumeBar.TabIndex = 8;
+            this.VolumeBar.ThumbColor = System.Drawing.Color.Gray;
+            this.VolumeBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.VolumeBar_Scroll);
             // 
             // btnStop
             // 
@@ -331,7 +332,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnStop;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnPause;
         private System.Windows.Forms.ListBox listBox1;
-        private Siticone.Desktop.UI.WinForms.SiticoneTrackBar siticoneTrackBar1;
+        private Siticone.Desktop.UI.WinForms.SiticoneTrackBar VolumeBar;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnPre;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnNext;
         private System.Windows.Forms.Label label1;
@@ -342,7 +343,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnSet;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBox1;
-        private Siticone.Desktop.UI.WinForms.SiticoneTrackBar siticoneTrackBar2;
+        private Siticone.Desktop.UI.WinForms.SiticoneTrackBar MusicBar;
         private System.Windows.Forms.Timer timerPlayback;
     }
 }

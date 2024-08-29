@@ -118,7 +118,26 @@ namespace MusicPlayer
             {
                 int nextIndex = listBox1.SelectedIndex += 1;
 
+                if (nextIndex < musicFiles.Count)
+                {
+                    listBox1.SelectedIndex = nextIndex;
+                    currentSong = musicFiles[nextIndex];
+                    musicPlayer.URL = currentSong;
+                    musicPlayer.Ctlcontrols.play();
+                    isPaused = false;
+                }
+
+                else 
+                {
+                    musicPlayer.Ctlcontrols.stop();
+                    isPaused = false;
+                }
             }
+        }
+
+        private void VolumeBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            musicPlayer.settings.volume = VolumeBar.Value;
         }
     }
 }

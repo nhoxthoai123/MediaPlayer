@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace MusicPlayer
@@ -17,6 +18,7 @@ namespace MusicPlayer
         private string currentSong;
         private bool isPaused;
         private bool isChangingPosition;
+        System.Timers.Timer timer;
         public Form1()
         {
             InitializeComponent();
@@ -138,6 +140,28 @@ namespace MusicPlayer
         private void VolumeBar_Scroll(object sender, ScrollEventArgs e)
         {
             musicPlayer.settings.volume = VolumeBar.Value;
+        }
+
+        private void MusicBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            musicPlayer.Ctlcontrols.currentPosition = MusicBar.Value;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += Timer_Elapsed;
+        }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DateTime currentTime = DateTime.Now;
+            DateTime userTime = dateTimePicker.Value;
+            if (currentTime.Hour == userTime.Hour && currentTime.Minute == userTime.Minute && currentTime.Second == userTime.Second) 
+            { 
+                
+            }
         }
     }
 }

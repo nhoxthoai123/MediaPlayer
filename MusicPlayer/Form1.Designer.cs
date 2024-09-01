@@ -47,9 +47,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSet = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timerPlayback = new System.Windows.Forms.Timer(this.components);
+            this.btnUndo = new Siticone.Desktop.UI.WinForms.SiticoneGradientButton();
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +88,7 @@
             this.MusicBar.Size = new System.Drawing.Size(840, 23);
             this.MusicBar.TabIndex = 10;
             this.MusicBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
+            this.MusicBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MusicBar_Scroll);
             // 
             // label2
             // 
@@ -269,20 +271,20 @@
             this.btnSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSet.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSet.ForeColor = System.Drawing.Color.White;
-            this.btnSet.Location = new System.Drawing.Point(623, 442);
+            this.btnSet.Location = new System.Drawing.Point(699, 442);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(155, 40);
             this.btnSet.TabIndex = 12;
             this.btnSet.Text = "SET";
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
-            // dateTimePicker1
+            // dateTimePicker
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(732, 406);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(94, 20);
-            this.dateTimePicker1.TabIndex = 13;
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker.Location = new System.Drawing.Point(732, 406);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(94, 20);
+            this.dateTimePicker.TabIndex = 13;
             // 
             // textBox1
             // 
@@ -297,13 +299,30 @@
             this.timerPlayback.Interval = 850;
             this.timerPlayback.Tick += new System.EventHandler(this.timerPlayback_Tick);
             // 
+            // btnUndo
+            // 
+            this.btnUndo.BorderRadius = 10;
+            this.btnUndo.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUndo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUndo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUndo.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUndo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUndo.Font = new System.Drawing.Font("Tw Cen MT", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUndo.ForeColor = System.Drawing.Color.White;
+            this.btnUndo.Location = new System.Drawing.Point(515, 442);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(155, 40);
+            this.btnUndo.TabIndex = 15;
+            this.btnUndo.Text = "UNDO";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 618);
+            this.Controls.Add(this.btnUndo);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.btnSet);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -315,6 +334,7 @@
             this.Controls.Add(this.musicPlayer);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.musicPlayer)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -341,10 +361,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnSet;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.TextBox textBox1;
         private Siticone.Desktop.UI.WinForms.SiticoneTrackBar MusicBar;
         private System.Windows.Forms.Timer timerPlayback;
+        private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnUndo;
     }
 }
 

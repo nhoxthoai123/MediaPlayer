@@ -88,7 +88,6 @@
             this.MusicBar.Size = new System.Drawing.Size(840, 23);
             this.MusicBar.TabIndex = 10;
             this.MusicBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
-            this.MusicBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MusicBar_Scroll);
             // 
             // label2
             // 
@@ -192,9 +191,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 77);
+            this.listBox1.Location = new System.Drawing.Point(11, 77);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(480, 355);
+            this.listBox1.Size = new System.Drawing.Size(469, 355);
             this.listBox1.TabIndex = 2;
             // 
             // btnPre
@@ -236,7 +235,7 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(499, 77);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(363, 316);
+            this.listBox2.Size = new System.Drawing.Size(353, 316);
             this.listBox2.TabIndex = 8;
             // 
             // label3

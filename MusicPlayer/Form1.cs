@@ -102,12 +102,12 @@ namespace MusicPlayer
 
         private void timerPlayback_Tick(object sender, EventArgs e)
         {
-            if (!isPaused) 
+            if (!isPaused)
             {
                 label2.Text = "Lenght: " + FormatTime(musicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(musicPlayer.currentMedia.duration);
             }
+            MusicBar.Value = (int)musicPlayer.Ctlcontrols.currentPosition;
         }
-
         private string FormatTime(double seconds)
         {
             TimeSpan time = TimeSpan.FromSeconds(seconds);
@@ -140,11 +140,6 @@ namespace MusicPlayer
         private void VolumeBar_Scroll(object sender, ScrollEventArgs e)
         {
             musicPlayer.settings.volume = VolumeBar.Value;
-        }
-
-        private void MusicBar_Scroll(object sender, ScrollEventArgs e)
-        {
-            musicPlayer.Ctlcontrols.currentPosition = MusicBar.Value;
         }
 
         private void Form1_Load(object sender, EventArgs e)

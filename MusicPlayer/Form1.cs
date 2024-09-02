@@ -87,25 +87,42 @@ namespace MusicPlayer
 
         private void btnPre_Click(object sender, EventArgs e)
         {
+            musicPlayer.Ctlcontrols.previous();
 
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedIndex != listBox1.Items.Count - 1)
+            {
+                listBox1.SetSelected(listBox1.SelectedIndex + 1, true);
+                musicPlayer.URL = musicFiles[listBox1.SelectedIndex];
+                musicPlayer.Ctlcontrols.play();
+            }
 
+            else
+            {
+                listBox1.SelectedIndex = 0; 
+                musicPlayer.URL = musicFiles[listBox1.SelectedIndex];
+                musicPlayer.Ctlcontrols.play();
+            }
         }
 
         private void btnSet_Click(object sender, EventArgs e)
         {
 
         }
-
+        
         private void timerPlayback_Tick(object sender, EventArgs e)
         {
             if (!isPaused)
             {
                 label2.Text = "Lenght: " + FormatTime(musicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(musicPlayer.currentMedia.duration);
             }
+
+            //code cho music bar di chuyển và thiết lập độ dài cho nó ko thì nó lỗi vãi loz ra
+            double duration = musicPlayer.Ctlcontrols.currentItem.duration;
+            MusicBar.Maximum = (int)duration;
             MusicBar.Value = (int)musicPlayer.Ctlcontrols.currentPosition;
         }
         private string FormatTime(double seconds)

@@ -83,9 +83,9 @@
             // 
             // MusicBar
             // 
-            this.MusicBar.Location = new System.Drawing.Point(12, 11);
+            this.MusicBar.Location = new System.Drawing.Point(29, 11);
             this.MusicBar.Name = "MusicBar";
-            this.MusicBar.Size = new System.Drawing.Size(840, 23);
+            this.MusicBar.Size = new System.Drawing.Size(809, 23);
             this.MusicBar.TabIndex = 10;
             this.MusicBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
             // 
@@ -94,7 +94,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(693, 47);
+            this.label2.Location = new System.Drawing.Point(679, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(159, 22);
             this.label2.TabIndex = 9;
@@ -115,7 +115,7 @@
             // 
             this.VolumeBar.Location = new System.Drawing.Point(576, 72);
             this.VolumeBar.Name = "VolumeBar";
-            this.VolumeBar.Size = new System.Drawing.Size(276, 23);
+            this.VolumeBar.Size = new System.Drawing.Size(262, 23);
             this.VolumeBar.TabIndex = 8;
             this.VolumeBar.ThumbColor = System.Drawing.Color.Gray;
             this.VolumeBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.VolumeBar_Scroll);
@@ -243,7 +243,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(167, 50);
+            this.label3.Location = new System.Drawing.Point(174, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 22);
             this.label3.TabIndex = 10;
@@ -254,7 +254,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(663, 52);
+            this.label4.Location = new System.Drawing.Point(650, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 22);
             this.label4.TabIndex = 11;
@@ -280,6 +280,7 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dateTimePicker.Location = new System.Drawing.Point(732, 406);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(94, 20);
@@ -291,7 +292,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(161, 20);
             this.textBox1.TabIndex = 14;
-            this.textBox1.Text = "Name timer";
             // 
             // timerPlayback
             // 
@@ -360,11 +360,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnSet;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.TextBox textBox1;
         private Siticone.Desktop.UI.WinForms.SiticoneTrackBar MusicBar;
         private System.Windows.Forms.Timer timerPlayback;
         private Siticone.Desktop.UI.WinForms.SiticoneGradientButton btnUndo;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }
 

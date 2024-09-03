@@ -137,8 +137,11 @@ namespace MusicPlayer
             if (!isPaused)
             {
                 label2.Text = "Lenght: " + FormatTime(musicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(musicPlayer.currentMedia.duration);
+
                 //code cho music bar di chuyển và thiết lập độ dài cho nó ko thì nó lỗi vãi loz ra
                 MusicBar.Value = (int)this.musicPlayer.Ctlcontrols.currentPosition;
+
+                //tự chạy khi hết thanh musicbar
                 musicPlayer.Ctlcontrols.play();
             }
         }
@@ -198,7 +201,8 @@ namespace MusicPlayer
                 }));
             }
         }
-
+        
+        //chỉnh được nhạc phát trên thanh musicbar
         private void MusicBar_Scroll(object sender, ScrollEventArgs e)
         {
             musicPlayer.Ctlcontrols.currentPosition = MusicBar.Value;

@@ -87,12 +87,24 @@ namespace MusicPlayer
 
         private void btnPre_Click(object sender, EventArgs e)
         {
-            musicPlayer.Ctlcontrols.previous();
+            if (listBox1.SelectedIndex != 0)
+            {
+                listBox1.SetSelected(listBox1.SelectedIndex - 1, true);
+                musicPlayer.URL = musicFiles[listBox1.SelectedIndex];
+            }
+
+            else
+            {
+                listBox1.SelectedIndex = listBox1.Items.Count -1;
+                musicPlayer.URL = musicFiles[listBox1.SelectedIndex];
+                musicPlayer.Ctlcontrols.play();
+            }
 
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            //Con mẹ nó có nút next thôi mà lằng nhằng vcl
             if (listBox1.SelectedIndex != listBox1.Items.Count - 1)
             {
                 listBox1.SetSelected(listBox1.SelectedIndex + 1, true);
@@ -110,23 +122,24 @@ namespace MusicPlayer
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-
+            timer.Start();
         }
         
         private void timerPlayback_Tick(object sender, EventArgs e)
         {
+            //code hiển thị thời gian thực và độ dài của bài hát
             if (!isPaused)
             {
                 label2.Text = "Lenght: " + FormatTime(musicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(musicPlayer.currentMedia.duration);
             }
 
             //code cho music bar di chuyển và thiết lập độ dài cho nó ko thì nó lỗi vãi loz ra
-            double duration = musicPlayer.Ctlcontrols.currentItem.duration;
-            MusicBar.Maximum = (int)duration;
+            MusicBar.Maximum = (int)musicPlayer.currentMedia.duration;
             MusicBar.Value = (int)musicPlayer.Ctlcontrols.currentPosition;
         }
         private string FormatTime(double seconds)
         {
+            //Chỉnh format lại cho thời gian
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"mm\:ss");
         }
@@ -170,9 +183,14 @@ namespace MusicPlayer
         {
             DateTime currentTime = DateTime.Now;
             DateTime userTime = dateTimePicker.Value;
+            ListBox listBox1 = new ListBox();
             if (currentTime.Hour == userTime.Hour && currentTime.Minute == userTime.Minute && currentTime.Second == userTime.Second) 
-            { 
-                
+            {
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+                    timer.Stop();
+                    btnNext_Click(sender, e);
+                }));
             }
         }
     }

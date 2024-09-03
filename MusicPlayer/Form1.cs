@@ -15,14 +15,17 @@ namespace MusicPlayer
     public partial class Form1 : Form
     {
         private List<string> musicFiles;
+        private List<string> dateTime;
         private string currentSong;
         private bool isPaused;
         private bool isChangingPosition;
         System.Timers.Timer timer;
+
         public Form1()
         {
             InitializeComponent();
             musicFiles = new List<string>();
+            dateTime = new List<string>();
             isPaused = false;
             isChangingPosition = false;
         }
@@ -64,7 +67,6 @@ namespace MusicPlayer
                     musicPlayer.URL = currentSong;
                     musicPlayer.Ctlcontrols.play();
                 }
-
                 timerPlayback.Enabled = true;
             }
         }
@@ -122,6 +124,10 @@ namespace MusicPlayer
 
         private void btnSet_Click(object sender, EventArgs e)
         {
+            foreach (var datetime in dateTime)
+            {
+                listBox2.Items.Add(datetime.ToString());
+            }
             timer.Start();
         }
         
@@ -131,11 +137,10 @@ namespace MusicPlayer
             if (!isPaused)
             {
                 label2.Text = "Lenght: " + FormatTime(musicPlayer.Ctlcontrols.currentPosition) + " / " + FormatTime(musicPlayer.currentMedia.duration);
+                //code cho music bar di chuyển và thiết lập độ dài cho nó ko thì nó lỗi vãi loz ra
+                MusicBar.Value = (int)this.musicPlayer.Ctlcontrols.currentPosition;
+                musicPlayer.Ctlcontrols.play();
             }
-
-            //code cho music bar di chuyển và thiết lập độ dài cho nó ko thì nó lỗi vãi loz ra
-            MusicBar.Maximum = (int)musicPlayer.currentMedia.duration;
-            MusicBar.Value = (int)musicPlayer.Ctlcontrols.currentPosition;
         }
         private string FormatTime(double seconds)
         {
@@ -192,6 +197,12 @@ namespace MusicPlayer
                     btnNext_Click(sender, e);
                 }));
             }
+        }
+
+        private void MusicBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            musicPlayer.Ctlcontrols.currentPosition = MusicBar.Value;
+            MusicBar.Maximum = (int)musicPlayer.currentMedia.duration;
         }
     }
 }

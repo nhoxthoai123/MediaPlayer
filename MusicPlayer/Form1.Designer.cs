@@ -58,10 +58,10 @@
             // musicPlayer
             // 
             this.musicPlayer.Enabled = true;
-            this.musicPlayer.Location = new System.Drawing.Point(0, 1);
+            this.musicPlayer.Location = new System.Drawing.Point(0, 2);
             this.musicPlayer.Name = "musicPlayer";
             this.musicPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("musicPlayer.OcxState")));
-            this.musicPlayer.Size = new System.Drawing.Size(862, 46);
+            this.musicPlayer.Size = new System.Drawing.Size(862, 47);
             this.musicPlayer.TabIndex = 0;
             this.musicPlayer.Visible = false;
             this.musicPlayer.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.musicPlayer_PlayStateChange);
@@ -88,6 +88,7 @@
             this.MusicBar.Size = new System.Drawing.Size(809, 23);
             this.MusicBar.TabIndex = 10;
             this.MusicBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(113)))), ((int)(((byte)(255)))));
+            this.MusicBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MusicBar_Scroll);
             // 
             // label2
             // 

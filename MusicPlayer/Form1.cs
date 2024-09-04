@@ -15,7 +15,6 @@ namespace MusicPlayer
     public partial class Form1 : Form
     {
         private List<string> musicFiles;
-        private List<string> dateTime;
         private string currentSong;
         private bool isPaused;
         private bool isChangingPosition;
@@ -25,7 +24,6 @@ namespace MusicPlayer
         {
             InitializeComponent();
             musicFiles = new List<string>();
-            dateTime = new List<string>();
             isPaused = false;
             isChangingPosition = false;
         }
@@ -124,10 +122,6 @@ namespace MusicPlayer
 
         private void btnSet_Click(object sender, EventArgs e)
         {
-            foreach (var datetime in dateTime)
-            {
-                listBox2.Items.Add(datetime.ToString());
-            }
             timer.Start();
         }
         
@@ -191,7 +185,6 @@ namespace MusicPlayer
         {
             DateTime currentTime = DateTime.Now;
             DateTime userTime = dateTimePicker.Value;
-            ListBox listBox1 = new ListBox();
             if (currentTime.Hour == userTime.Hour && currentTime.Minute == userTime.Minute && currentTime.Second == userTime.Second) 
             {
                 this.Invoke(new MethodInvoker(delegate ()
